@@ -85,21 +85,26 @@ const DetailsCard = ({
           <DescriptionListGroup>
             <DescriptionListTerm>
               <span>Name</span>
-              {!editing && (
-                <Button
-                  variant="link"
-                  onClick={() => setEditing(true)}
-                  className="pf-v5-u-ml-sm"
-                >
-                  <PencilAltIcon />
-                </Button>
-              )}
+              <Button
+                variant="link"
+                onClick={() => setEditing(true)}
+                className="pf-v5-u-ml-sm"
+              >
+                <PencilAltIcon
+                  color={
+                    editing
+                      ? 'var(--pf-v5-global--palette--black-300)'
+                      : undefined
+                  }
+                />
+              </Button>
             </DescriptionListTerm>
             <DescriptionListDescription>
               {editing ? (
                 <Flex
                   direction={{ default: 'column', md: 'row' }}
                   spaceItems={{ default: 'spaceItemsXs' }}
+                  alignItems={{ default: 'alignItemsStretch' }}
                 >
                   <FlexItem>
                     <FormGroup
@@ -249,6 +254,7 @@ const DetailsCard = ({
           to={
             'https://docs.redhat.com/en/documentation/red_hat_insights/1-latest/html-single/red_hat_insights_remediations_guide/index#creating-managing-playbooks_red-hat-insights-remediation-guide'
           }
+          target="_blank"
         >
           <Button variant="link" className="pf-v5-u-font-size-sm">
             Learn More <ExternalLinkAltIcon />

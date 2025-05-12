@@ -105,7 +105,7 @@ const RemediationDetailsPageHeader = ({
             <FlexItem>
               <RemediationDetailsDropdown
                 remediation={remediation}
-                remediationsList={allRemediations.data}
+                remediationsList={allRemediations?.data}
                 updateRemPlan={updateRemPlan}
                 refetch={refetch}
               />

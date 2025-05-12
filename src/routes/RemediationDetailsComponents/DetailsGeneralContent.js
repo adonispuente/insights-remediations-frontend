@@ -3,7 +3,6 @@ import { Alert, Flex, FlexItem } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 import DetailsCard from './DetailsCard';
 import ProgressCard from './ProgressCard';
-import './DetailsGeneralContent.scss';
 
 const DetailsGeneralContent = ({
   details,
@@ -22,14 +21,12 @@ const DetailsGeneralContent = ({
     remediationStatus?.connectedSystems !== 0;
 
   return (
-    <section
-      className={'pf-v5-l-page__main-section pf-v5-c-page__main-section'}
-    >
+    <section className="pf-v5-l-page__main-section pf-v5-c-page__main-section">
       {!readyOrNot && (
         <Alert
           isInline
-          variant={'danger'}
-          title={'Remediation plan cannot be executed'}
+          variant="danger"
+          title="Remediation plan cannot be executed"
           className="pf-v5-u-mb-md"
         >
           <p>
@@ -42,10 +39,13 @@ const DetailsGeneralContent = ({
       <Flex
         justifyContent={{ default: 'justifyContentSpaceEvenly' }}
         direction={{ default: 'column', md: 'row' }}
-        alignItems={{ default: 'alignItemsStretch' }}
         flexWrap={{ default: 'wrap' }}
       >
-        <FlexItem className="rem-details-cards">
+        <FlexItem
+          style={{
+            flex: '1 1 48%',
+          }}
+        >
           <DetailsCard
             details={details}
             onRename={onRename}
@@ -57,7 +57,11 @@ const DetailsGeneralContent = ({
             remediationPlaybookRuns={remediationPlaybookRuns}
           />
         </FlexItem>
-        <FlexItem className="rem-details-cards">
+        <FlexItem
+          style={{
+            flex: '1 1 48%',
+          }}
+        >
           <ProgressCard
             remediationStatus={remediationStatus}
             permissions={permissions}
