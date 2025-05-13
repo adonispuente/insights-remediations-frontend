@@ -32,8 +32,6 @@ import { formatDate } from '../Cells';
 import { useVerifyName } from '../../Utilities/useVerifyName';
 import InsightsLink from '@redhat-cloud-services/frontend-components/InsightsLink';
 import { execStatus } from './helpers';
-import './DetailsCard.scss';
-import { useMediaQuery } from '../../Utilities/Hooks/useMediaQuery';
 
 const DetailsCard = ({
   details,
@@ -51,7 +49,6 @@ const DetailsCard = ({
     value,
     allRemediations?.data
   );
-  const isMdUp = useMediaQuery('(min-width: 768px)');
 
   const onSubmit = () => {
     updateRemPlan({
@@ -78,8 +75,14 @@ const DetailsCard = ({
       </CardTitle>
       <CardBody>
         <DescriptionList
-          isHorizontal={isMdUp}
-          className="rem-det-description-list"
+          isHorizontal
+          orientation={{
+            sm: 'vertical',
+            md: 'horizontal',
+            lg: 'horizontal',
+            xl: 'horizontal',
+            '2xl': 'horizontal',
+          }}
         >
           {/* Editable Name */}
           <DescriptionListGroup>
@@ -87,7 +90,7 @@ const DetailsCard = ({
               <span>Name</span>
               <Button
                 variant="link"
-                onClick={() => setEditing(true)}
+                onClick={() => setEditing(!editing)}
                 className="pf-v5-u-ml-sm"
               >
                 <PencilAltIcon
