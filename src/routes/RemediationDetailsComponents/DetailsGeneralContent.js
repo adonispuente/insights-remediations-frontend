@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Flex, FlexItem } from '@patternfly/react-core';
+import { Alert, Grid, GridItem } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 import DetailsCard from './DetailsCard';
 import ProgressCard from './ProgressCard';
@@ -36,16 +36,9 @@ const DetailsGeneralContent = ({
           </p>
         </Alert>
       )}
-      <Flex
-        justifyContent={{ default: 'justifyContentSpaceEvenly' }}
-        direction={{ default: 'column', md: 'row' }}
-        flexWrap={{ default: 'wrap' }}
-      >
-        <FlexItem
-          style={{
-            flex: '1 1 48%',
-          }}
-        >
+
+      <Grid hasGutter>
+        <GridItem span={12} md={6}>
           <DetailsCard
             details={details}
             onRename={onRename}
@@ -56,20 +49,17 @@ const DetailsGeneralContent = ({
             allRemediations={allRemediations}
             remediationPlaybookRuns={remediationPlaybookRuns}
           />
-        </FlexItem>
-        <FlexItem
-          style={{
-            flex: '1 1 48%',
-          }}
-        >
+        </GridItem>
+
+        <GridItem span={12} md={6}>
           <ProgressCard
             remediationStatus={remediationStatus}
             permissions={permissions}
             readyOrNot={readyOrNot}
             onNavigateToTab={onNavigateToTab}
           />
-        </FlexItem>
-      </Flex>
+        </GridItem>
+      </Grid>
     </section>
   );
 };
